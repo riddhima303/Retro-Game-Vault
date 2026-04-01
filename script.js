@@ -1,24 +1,32 @@
-const API_KEY = "65c728e160e040f098e2e9657d53b3fa";
+const API_KEY = "807d4e3fecd8428baf75c42cb2f8effc";
 
 const container = document.getElementById("games");
 const loading = document.getElementById("loading");
 
 async function fetchGames() {
   loading.style.display = "block";
-  const res = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}`);
-  const data = await res.json();
 
-  let output = "";
+  try {
+    const res = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}`);
+    const data = await res.json();
 
-  data.results.forEach(game => {
-    output += `
-      <div>
-        <h3>${game.name}</h3>
-        <img src="${game.background_image}" width="200"/>
-      </div>
-    `;
-  });
-  container.innerHTML = output;
+    let output = "";
+
+    data.results.forEach(game => {
+      output += `
+        <div>
+          <h3>${game.name}</h3>
+          <img src="${game.background_image}" width="200"/>
+        </div>
+      `;
+    });
+
+    container.innerHTML = output;
+  } catch (error) {
+    container.innerHTML = "<p>Unable to load games. Please try again later.</p>";
+  } finally {
+    loading.style.display = "none";
+  }
 }
 
 fetchGames();
