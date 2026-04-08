@@ -1,18 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Explorer</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Game Explorer 🎮</h1>
+  <div class="wrapper">
+    <!-- Header Section -->
+    <header class="header">
+      <div class="header-inner">
+        <h1 class="logo">games</h1>
+        <p class="tagline">discover. play. enjoy</p>
+      </div>
+    </header>
 
-  <input type="text" id="search" placeholder="Search games..." />
+    <!-- Main Content -->
+    <main class="main">
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="panel sidebar-panel">
+            <p class="sidebar-label">what as well</p>
+            <h2 class="sidebar-title">quick picks</h2>
+            <ul id="sidebarNav" class="sidebar-nav">
+              <li><button class="sidebar-link active" data-action="featured">featured</button></li>
+              <li><button class="sidebar-link" data-action="recent">recent</button></li>
+              <li><button class="sidebar-link" data-action="favorites">favorites</button></li>
+              <li><button class="sidebar-link" data-action="recommended">recommended</button></li>
+            </ul>
+          </div>
 
-  <div id="loading">Loading...</div>
-  <div id="games"></div>
-    <script src="script.js"></script>
+          <div class="panel sidebar-panel sidebar-stats">
+            <p class="sidebar-label">collection</p>
+            <div class="stat">
+              <span>games</span><strong id="loadedCount">0</strong>
+            </div>
+            <div class="stat">
+              <span>genres</span><strong id="genreCount">0</strong>
+            </div>
+            <div class="stat">
+              <span>liked</span><strong id="likedCount">0</strong>
+            </div>
+          </div>
+        </aside>
+
+        <section class="content">
+          <!-- Controls -->
+          <section class="controls-area">
+            <div class="search-wrapper">
+              <input type="text" id="search" class="search-field" placeholder="find a game..." />
+              <span class="search-underline"></span>
+            </div>
+
+            <div class="filter-controls">
+              <select id="filter" class="control-select">
+                <option value="all">all genres</option>
+                <option value="action">action</option>
+                <option value="adventure">adventure</option>
+                <option value="rpg">rpg</option>
+                <option value="shooter">shooter</option>
+              </select>
+
+              <select id="sort" class="control-select">
+                <option value="default">sort</option>
+                <option value="name-asc">a → z</option>
+                <option value="name-desc">z → a</option>
+              </select>
+            </div>
+
+            <button id="themeToggle" class="theme-toggle">◐ light</button>
+          </section>
+
+          <!-- Loading State -->
+          <div id="loading" class="loading-container">
+            <div class="loader"></div>
+            <p>loading...</p>
+          </div>
+
+          <!-- Games Grid -->
+          <div id="games" class="games-container"></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>built with care</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
