@@ -37,6 +37,12 @@ https://rawg.io/apidocs
 2. Open `index.html` in browser
 
 ---
+
+
+## Note
+This project uses an API key directly in the frontend for demonstration purposes.
+
+---
 ## 👩‍💻 Author
 
 Riddhima Gupta
